@@ -2,16 +2,23 @@ package WebService;
 
 import dto.Cliente;
 import jakarta.ejb.Stateless;
+import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
+import service.ClientService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Stateless
 @Path("primerosPasos")
 public class PrimerosPasosWs {
+    @Inject
+    private ClientService client;
     public PrimerosPasosWs() {
     }
 
@@ -24,11 +31,19 @@ public class PrimerosPasosWs {
     }
 
     @POST
-    @Path("guardarCliente")
+    @Path("pathAnabel")
     @Produces({ MediaType.APPLICATION_JSON})
-    public void guardaCliente(Cliente cliente)
+    public List<Cliente> guardaCliente(List<Cliente> inputListaClientes)
     {
+        List<Cliente> listaRetorno=new ArrayList<>();
+        for(Cliente clienteIteracion: inputListaClientes)
+        {
+            String nombreMayusculas=client.convertirNombresMayuscula(clienteIteracion.getNombre());
 
+            clienteIteracion.setNombre(nombreMayusculas);
+            listaRetorno.add(clienteIteracion);
+        }
+        return listaRetorno;
 
     }
 
