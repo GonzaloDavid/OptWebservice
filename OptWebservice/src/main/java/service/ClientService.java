@@ -8,4 +8,10 @@ public class ClientService {
         String nombreMayuscula = nombre.toUpperCase();
         return nombreMayuscula;
     }
+
+    public String convertirNombresMinuscula(String nombre)
+        {
+            String nombreMinuscula = nombre.toLowerCase();
+            return nombreMinuscula;
+        }
 }
