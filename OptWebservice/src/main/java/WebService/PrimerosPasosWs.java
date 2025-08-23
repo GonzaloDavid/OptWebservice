@@ -47,4 +47,21 @@ public class PrimerosPasosWs {
 
     }
 
+
+    @POST
+    @Path("pathJuan")
+    @Produces({ MediaType.APPLICATION_JSON})
+    public List<Cliente> guardaCliente2(List<Cliente> inputListaClientes)
+    {
+        List<Cliente> listaRetorno=new ArrayList<>();
+        for(Cliente clienteIteracion: inputListaClientes)
+        {
+            String nombreMinusculas=client.convertirNombresMinuscula(clienteIteracion.getNombre());
+
+            clienteIteracion.setNombre(nombreMinusculas);
+            listaRetorno.add(clienteIteracion);
+        }
+        return listaRetorno;
+
+    }
 }
