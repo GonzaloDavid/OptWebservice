@@ -6,7 +6,17 @@ public class Cliente {
     private String tipoIdentificacion;
     private String fechaNacimiento;
 
+    private String codRetornoIdentificacion;
+
     public Cliente() {
+    }
+
+    public String getCodRetornoIdentificacion() {
+        return codRetornoIdentificacion;
+    }
+
+    public void setCodRetornoIdentificacion(String codRetornoIdentificacion) {
+        this.codRetornoIdentificacion = codRetornoIdentificacion;
     }
 
     public String getNombre() {

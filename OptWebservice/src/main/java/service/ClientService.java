@@ -13,4 +13,11 @@ public class ClientService {
         String nombreMinuscula = nombre.toLowerCase();
         return nombreMinuscula;
     }
+    public String validaIdentificacion(String identificacion)
+    {  int lenIdentificacion=identificacion.length();
+        if (lenIdentificacion < 10 ) {
+            return "Identificación inválida: " + identificacion + " debe tener 10 caracteres";
+        }
+        return "Identificación válida";
+    }
 }

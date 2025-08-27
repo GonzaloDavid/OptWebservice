@@ -31,7 +31,7 @@ public class PrimerosPasosWs {
     }
 
     @POST
-    @Path("pathAnabel")
+    @Path("guardarCliente")
     @Produces({ MediaType.APPLICATION_JSON})
     public List<Cliente> guardaCliente(List<Cliente> inputListaClientes)
     {
@@ -39,8 +39,10 @@ public class PrimerosPasosWs {
         for(Cliente clienteIteracion: inputListaClientes)
         {
             String nombreMayusculas=client.convertirNombresMayuscula(clienteIteracion.getNombre());
+            String codvalidaIdentificacion=client.validaIdentificacion(clienteIteracion.getIdentificacion());
 
             clienteIteracion.setNombre(nombreMayusculas);
+            clienteIteracion.setCodRetornoIdentificacion(codvalidaIdentificacion);
             listaRetorno.add(clienteIteracion);
         }
         return listaRetorno;
