@@ -49,17 +49,6 @@ public class PrimerosPasosWs {
     @POST
     @Path("pathLuis")
     @Produces({ MediaType.APPLICATION_JSON})
-    public List<Cliente> guardaCliente1(List<Cliente> inputListaClientes)
-    {
-        List<Cliente> listaRetorno=new ArrayList<>();
-        for(Cliente clienteIteracion: inputListaClientes)
-        {
-            String nombreMinuscula=client.convertirNombresMinuscula(clienteIteracion.getNombre());
-
-
-    @POST
-    @Path("pathJuan")
-    @Produces({ MediaType.APPLICATION_JSON})
     public List<Cliente> guardaCliente2(List<Cliente> inputListaClientes)
     {
         List<Cliente> listaRetorno=new ArrayList<>();
@@ -73,4 +62,6 @@ public class PrimerosPasosWs {
         return listaRetorno;
 
     }
+
+
 }
