@@ -7,8 +7,17 @@ public class Cliente {
     private String fechaNacimiento;
 
     private String codRetornoIdentificacion;
+    private String codtipoIdentificacion;
 
     public Cliente() {
+    }
+
+    public String getCodtipoIdentificacion() {
+        return codtipoIdentificacion;
+    }
+
+    public void setCodtipoIdentificacion(String codtipoIdentificacion) {
+        this.codtipoIdentificacion = codtipoIdentificacion;
     }
 
     public String getCodRetornoIdentificacion() {

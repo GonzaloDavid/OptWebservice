@@ -40,9 +40,11 @@ public class PrimerosPasosWs {
         {
             String nombreMayusculas=client.convertirNombresMayuscula(clienteIteracion.getNombre());
             String codvalidaIdentificacion=client.validaIdentificacion(clienteIteracion.getIdentificacion());
+            String tipoiden=client.VerifiIden(clienteIteracion.getTipoIdentificacion());
 
             clienteIteracion.setNombre(nombreMayusculas);
             clienteIteracion.setCodRetornoIdentificacion(codvalidaIdentificacion);
+            clienteIteracion.setCodtipoIdentificacion(tipoiden);
             listaRetorno.add(clienteIteracion);
         }
         return listaRetorno;

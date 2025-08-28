@@ -20,4 +20,20 @@ public class ClientService {
         }
         return "Identificación válida";
     }
+
+    public String VerifiIden(String tipoIdentificacion)
+    {
+        switch (
+            tipoIdentificacion) {
+            case "C":
+                return "Tipo Identificación Cedula" ;
+            case "R":
+                return "Tipo Identificación Ruc" ;
+            case "P":
+                return "Tipo Identificación Passaporte " ;
+            default:
+                return "Tipo de identificación no válido";
+        }
+        }
+
 }
