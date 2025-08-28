@@ -1,8 +1,14 @@
 package service;
 
+import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
+import util.MessageService;
 
+@Stateless
 public class ClientService {
+
+    @Inject
+    private MessageService messageService;
     public String convertirNombresMayuscula(String nombre)
     {
         String nombreMayuscula = nombre.toUpperCase();
@@ -26,13 +32,13 @@ public class ClientService {
         switch (
             tipoIdentificacion) {
             case "C":
-                return "Tipo Identificación Cedula" ;
+                return messageService.obtenerMensaje("03") ;
             case "R":
-                return "Tipo Identificación Ruc" ;
+                return messageService.obtenerMensaje("04") ;
             case "P":
-                return "Tipo Identificación Passaporte " ;
+                return messageService.obtenerMensaje("05") ;
             default:
-                return "Tipo de identificación no válido";
+                return messageService.obtenerMensaje("06") ;
         }
         }
 
