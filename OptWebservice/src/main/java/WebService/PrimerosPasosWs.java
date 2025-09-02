@@ -1,6 +1,7 @@
 package WebService;
 
 import dto.Cliente;
+import dto.RespuestaMensaje;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
@@ -33,13 +34,16 @@ public class PrimerosPasosWs {
     @POST
     @Path("guardarCliente")
     @Produces({ MediaType.APPLICATION_JSON})
-    public List<Cliente> guardaCliente(List<Cliente> inputListaClientes)
+    public RespuestaMensaje guardaCliente(List<Cliente> inputListaClientes)
     {
+        RespuestaMensaje respuesta=new RespuestaMensaje();
         List<Cliente> listaRetorno=new ArrayList<>();
         try{
 
             for(Cliente clienteIteracion: inputListaClientes)
+
             {
+
                 String nombreMayusculas=client.convertirNombresMayuscula(clienteIteracion.getNombre());
                 String codvalidaIdentificacion=client.validaIdentificacion(clienteIteracion.getIdentificacion());
                 String tipoiden=client.VerifiIden(clienteIteracion.getTipoIdentificacion());
@@ -52,13 +56,16 @@ public class PrimerosPasosWs {
                 clienteIteracion.setCodtipoIdentificacion(tipoiden);
                 listaRetorno.add(clienteIteracion);
             }
+            respuesta.setCodigo("00");
+            respuesta.setMensaje("Transacción exitosa");
+            respuesta.setDatos(listaRetorno);
         }
         catch (Exception error){
             System.out.println("Ocurrio un error: " + error.getMessage());
+            respuesta.setCodigo("01");
+            respuesta.setMensaje("Ocurrio un error: " + error.getMessage());
         }
-
-        return listaRetorno;
-
+        return respuesta;
     }
     @POST
     @Path("pathLuis")
