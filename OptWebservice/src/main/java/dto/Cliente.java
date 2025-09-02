@@ -8,8 +8,26 @@ public class Cliente {
 
     private String codRetornoIdentificacion;
     private String codtipoIdentificacion;
+    private String codEdad;
+    private String ValNombre;
 
     public Cliente() {
+    }
+
+    public String getValNombre() {
+        return ValNombre;
+    }
+
+    public void setValNombre(String valNombre) {
+        ValNombre = valNombre;
+    }
+
+    public String getCodEdad() {
+        return codEdad;
+    }
+
+    public void setCodEdad(String codEdad) {
+        this.codEdad = codEdad;
     }
 
     public String getCodtipoIdentificacion() {

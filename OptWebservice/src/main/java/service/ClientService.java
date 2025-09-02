@@ -41,5 +41,30 @@ public class ClientService {
                 return messageService.obtenerMensaje("06") ;
         }
         }
+    public String validaEdad(String fechaNacimiento)
+    {
+        if (fechaNacimiento.length() != 10 ) {
+            return messageService.obtenerMensaje("08");
+        }
+        else {
+            String anioNacimientoStr = fechaNacimiento.substring(0, 4);
+            int anioNacimiento = Integer.parseInt(anioNacimientoStr);
+            int anioActual = java.time.Year.now().getValue();
+            int edad = anioActual - anioNacimiento;
+            if (edad < 18) {
+                return messageService.obtenerMensaje("06");
+            } else {
+                return messageService.obtenerMensaje("07");
+            }
+        }
+    }
+    public String valNombre(String nombre)
+    {
+        int lenNombre=nombre.length();
+        if (lenNombre < 3 ) {
+            return messageService.obtenerMensaje("10");
+        }
+        return messageService.obtenerMensaje("11");
+    }
 
 }
