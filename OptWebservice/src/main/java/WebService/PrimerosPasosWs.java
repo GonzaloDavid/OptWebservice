@@ -41,14 +41,13 @@ public class PrimerosPasosWs {
             String nombreMayusculas=client.convertirNombresMayuscula(clienteIteracion.getNombre());
             String codvalidaIdentificacion=client.validaIdentificacion(clienteIteracion.getIdentificacion());
             String tipoiden=client.VerifiIden(clienteIteracion.getTipoIdentificacion());
-            String valedad=client.validaEdad(clienteIteracion.getFechaNacimiento());
-            String valNombre=client.validaEdad(clienteIteracion.getValNombre());
-
+            String edad=client.validarEdad(clienteIteracion.getFechaNacimiento());
+            String nombre=client.validarNombre(clienteIteracion.getNombre());
+            clienteIteracion.setCodEdad(edad);
+            clienteIteracion.setCodNombre(nombre);
             clienteIteracion.setNombre(nombreMayusculas);
             clienteIteracion.setCodRetornoIdentificacion(codvalidaIdentificacion);
             clienteIteracion.setCodtipoIdentificacion(tipoiden);
-            clienteIteracion.setCodEdad(valedad);
-            clienteIteracion.setValNombre(valNombre);
             listaRetorno.add(clienteIteracion);
         }
         return listaRetorno;

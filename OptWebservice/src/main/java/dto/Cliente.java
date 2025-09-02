@@ -8,28 +8,13 @@ public class Cliente {
 
     private String codRetornoIdentificacion;
     private String codtipoIdentificacion;
-    private String codEdad;
-    private String ValNombre;
+private String codEdad;
+private String codNombre;
 
     public Cliente() {
     }
 
-    public String getValNombre() {
-        return ValNombre;
-    }
-
-    public void setValNombre(String valNombre) {
-        ValNombre = valNombre;
-    }
-
-    public String getCodEdad() {
-        return codEdad;
-    }
-
-    public void setCodEdad(String codEdad) {
-        this.codEdad = codEdad;
-    }
-
+  
     public String getCodtipoIdentificacion() {
         return codtipoIdentificacion;
     }
@@ -76,5 +61,21 @@ public class Cliente {
 
     public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public String getCodEdad() {
+        return codEdad;
+    }
+
+    public String getCodNombre() {
+        return codNombre;
+    }
+
+    public void setCodNombre(String codNombre) {
+        this.codNombre = codNombre;
+    }
+
+    public void setCodEdad(String codEdad) {
+        this.codEdad = codEdad;
     }
 }

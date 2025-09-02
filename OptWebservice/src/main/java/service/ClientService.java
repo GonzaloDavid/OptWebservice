@@ -41,30 +41,31 @@ public class ClientService {
                 return messageService.obtenerMensaje("06") ;
         }
         }
-    public String validaEdad(String fechaNacimiento)
+public String validarEdad(String fechaNacimiento)
+{   if (fechaNacimiento.length()<10)
     {
-        if (fechaNacimiento.length() != 10 ) {
-            return messageService.obtenerMensaje("08");
-        }
-        else {
-            String anioNacimientoStr = fechaNacimiento.substring(0, 4);
-            int anioNacimiento = Integer.parseInt(anioNacimientoStr);
-            int anioActual = java.time.Year.now().getValue();
-            int edad = anioActual - anioNacimiento;
-            if (edad < 18) {
-                return messageService.obtenerMensaje("06");
-            } else {
-                return messageService.obtenerMensaje("07");
-            }
-        }
+        return messageService.obtenerMensaje("08");
     }
-    public String valNombre(String nombre)
+    int yearOfBirth=Integer.parseInt(fechaNacimiento.substring(0,4));
+    int currentYear=2025;
+    int age=currentYear-yearOfBirth;
+    if (age<18 )
     {
-        int lenNombre=nombre.length();
-        if (lenNombre < 3 ) {
-            return messageService.obtenerMensaje("10");
-        }
+        return messageService.obtenerMensaje("09");
+    }
+    return messageService.obtenerMensaje("07");
+
+}
+public String validarNombre(String nombre)
+{
+    if (nombre==null || nombre.isEmpty())
+    {
+        return messageService.obtenerMensaje("10");
+    }
+    if (nombre.length()<3)
+    {
         return messageService.obtenerMensaje("11");
     }
-
+    return messageService.obtenerMensaje("12");
+}
 }
