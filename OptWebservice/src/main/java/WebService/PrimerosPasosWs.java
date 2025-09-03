@@ -60,6 +60,12 @@ public class PrimerosPasosWs {
             respuesta.setMensaje("Transacción exitosa");
             respuesta.setDatos(listaRetorno);
         }
+        catch (NumberFormatException error_num)
+        {
+            System.out.println("Ocurrio un error de formato: " + error_num.getMessage());
+            respuesta.setCodigo("02");
+            respuesta.setMensaje("Ocurrio un error de formato: " + error_num.getMessage());
+        }
         catch (Exception error){
             System.out.println("Ocurrio un error: " + error.getMessage());
             respuesta.setCodigo("01");
