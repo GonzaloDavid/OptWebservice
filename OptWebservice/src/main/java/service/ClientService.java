@@ -42,19 +42,29 @@ public class ClientService {
         }
         }
 public String validarEdad(String fechaNacimiento)
-{   if (fechaNacimiento.length()<10)
+{
+    try{
+        if (fechaNacimiento.length()<10)
+        {
+            return messageService.obtenerMensaje("08");
+        }
+        int yearOfBirth=Integer.parseInt(fechaNacimiento.substring(0,4));
+        int currentYear=2025;
+        int age=currentYear-yearOfBirth;
+        if (age<18 )
+        {
+            return messageService.obtenerMensaje("09");
+        }
+        return messageService.obtenerMensaje("07");
+    }catch (NumberFormatException e)
     {
-        return messageService.obtenerMensaje("08");
-    }
-    int yearOfBirth=Integer.parseInt(fechaNacimiento.substring(0,4));
-    int currentYear=2025;
-    int age=currentYear-yearOfBirth;
-    if (age<18 )
+        System.out.println("Error de Numeros: " + e.getMessage());
+        throw e;
+    }catch (Exception e1)
     {
-        return messageService.obtenerMensaje("09");
+        System.out.println("Error generico: " + e1.getMessage());
+        throw e1;
     }
-    return messageService.obtenerMensaje("07");
-
 }
 public String validarNombre(String nombre)
 {

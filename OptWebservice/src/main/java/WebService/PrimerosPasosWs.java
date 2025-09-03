@@ -66,7 +66,20 @@ public class PrimerosPasosWs {
             respuesta.setCodigo("02");
             respuesta.setMensaje("Ocurrio un error de formato: " + error_num.getMessage());
         }
+        catch (RuntimeException error_run)
+        {
+            System.out.println("Ocurrio un error de formato: " + error_run.getMessage());
+            respuesta.setCodigo("03");
+            respuesta.setMensaje("Ocurrio un error de formato: " + error_run.getMessage());
+        }
         catch (Exception error){
+
+            Throwable cause = error.getCause();
+            if (cause instanceof NumberFormatException) {
+                System.out.println("Se detectó un NumberFormatException: " + cause.getMessage());
+            } else {
+                System.out.println("Se detectó otra excepción: " + error.getMessage());
+            }
             System.out.println("Ocurrio un error: " + error.getMessage());
             respuesta.setCodigo("01");
             respuesta.setMensaje("Ocurrio un error: " + error.getMessage());
