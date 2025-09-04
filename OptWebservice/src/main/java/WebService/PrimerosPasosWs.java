@@ -40,7 +40,6 @@ public class PrimerosPasosWs {
         List<Cliente> listaRetorno=new ArrayList<>();
         try{
             listaRetorno =client.procesoGuardaCliente(inputListaClientes);
-
             respuesta.setCodigo("00");
             respuesta.setMensaje("Transacción exitosa");
             respuesta.setDatos(listaRetorno);
@@ -51,7 +50,11 @@ public class PrimerosPasosWs {
             if (cause instanceof NumberFormatException) {
                 respuesta.setCodigo("02");
                 System.out.println("Se detectó un NumberFormatException: " + cause.getMessage());
-
+                for (Cliente c:inputListaClientes){
+                    c.setFechaNacimiento("1969/08/12");
+                }
+                listaRetorno =client.procesoGuardaCliente(inputListaClientes);
+                respuesta.setDatos(listaRetorno);
             } else {
                 respuesta.setCodigo("01");
                 System.out.println("Se detectó otra excepción: " + error.getMessage());
