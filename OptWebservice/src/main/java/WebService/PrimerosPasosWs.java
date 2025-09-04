@@ -59,29 +59,19 @@ public class PrimerosPasosWs {
             respuesta.setCodigo("00");
             respuesta.setMensaje("Transacción exitosa");
             respuesta.setDatos(listaRetorno);
-        }
-        catch (NumberFormatException error_num)
-        {
-            System.out.println("Ocurrio un error de formato: " + error_num.getMessage());
-            respuesta.setCodigo("02");
-            respuesta.setMensaje("Ocurrio un error de formato: " + error_num.getMessage());
-        }
-        catch (RuntimeException error_run)
-        {
-            System.out.println("Ocurrio un error de formato: " + error_run.getMessage());
-            respuesta.setCodigo("03");
-            respuesta.setMensaje("Ocurrio un error de formato: " + error_run.getMessage());
-        }
-        catch (Exception error){
+            
+        }catch (Exception error){
 
             Throwable cause = error.getCause();
             if (cause instanceof NumberFormatException) {
+                respuesta.setCodigo("02");
                 System.out.println("Se detectó un NumberFormatException: " + cause.getMessage());
             } else {
+                respuesta.setCodigo("01");
                 System.out.println("Se detectó otra excepción: " + error.getMessage());
             }
             System.out.println("Ocurrio un error: " + error.getMessage());
-            respuesta.setCodigo("01");
+
             respuesta.setMensaje("Ocurrio un error: " + error.getMessage());
         }
         return respuesta;
