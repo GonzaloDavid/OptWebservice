@@ -1,8 +1,12 @@
 package service;
 
+import dto.Cliente;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import util.MessageService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Stateless
 public class ClientService {
@@ -77,5 +81,24 @@ public String validarNombre(String nombre)
         return messageService.obtenerMensaje("11");
     }
     return messageService.obtenerMensaje("12");
+}
+public List<Cliente> procesoGuardaCliente(List<Cliente> inputListaClientes){
+    List<Cliente> listaRetorno=new ArrayList<>();
+    for(Cliente clienteIteracion: inputListaClientes)
+    {
+
+        String nombreMayusculas=convertirNombresMayuscula(clienteIteracion.getNombre());
+        String codvalidaIdentificacion=validaIdentificacion(clienteIteracion.getIdentificacion());
+        String tipoiden=VerifiIden(clienteIteracion.getTipoIdentificacion());
+        String edad=validarEdad(clienteIteracion.getFechaNacimiento());
+        String nombre=validarNombre(clienteIteracion.getNombre());
+        clienteIteracion.setCodEdad(edad);
+        clienteIteracion.setCodNombre(nombre);
+        clienteIteracion.setNombre(nombreMayusculas);
+        clienteIteracion.setCodRetornoIdentificacion(codvalidaIdentificacion);
+        clienteIteracion.setCodtipoIdentificacion(tipoiden);
+        listaRetorno.add(clienteIteracion);
+    }
+ return listaRetorno;
 }
 }

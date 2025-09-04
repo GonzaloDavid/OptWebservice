@@ -39,23 +39,8 @@ public class PrimerosPasosWs {
         RespuestaMensaje respuesta=new RespuestaMensaje();
         List<Cliente> listaRetorno=new ArrayList<>();
         try{
+            listaRetorno =client.procesoGuardaCliente(inputListaClientes);
 
-            for(Cliente clienteIteracion: inputListaClientes)
-
-            {
-
-                String nombreMayusculas=client.convertirNombresMayuscula(clienteIteracion.getNombre());
-                String codvalidaIdentificacion=client.validaIdentificacion(clienteIteracion.getIdentificacion());
-                String tipoiden=client.VerifiIden(clienteIteracion.getTipoIdentificacion());
-                String edad=client.validarEdad(clienteIteracion.getFechaNacimiento());
-                String nombre=client.validarNombre(clienteIteracion.getNombre());
-                clienteIteracion.setCodEdad(edad);
-                clienteIteracion.setCodNombre(nombre);
-                clienteIteracion.setNombre(nombreMayusculas);
-                clienteIteracion.setCodRetornoIdentificacion(codvalidaIdentificacion);
-                clienteIteracion.setCodtipoIdentificacion(tipoiden);
-                listaRetorno.add(clienteIteracion);
-            }
             respuesta.setCodigo("00");
             respuesta.setMensaje("Transacción exitosa");
             respuesta.setDatos(listaRetorno);
@@ -66,6 +51,7 @@ public class PrimerosPasosWs {
             if (cause instanceof NumberFormatException) {
                 respuesta.setCodigo("02");
                 System.out.println("Se detectó un NumberFormatException: " + cause.getMessage());
+
             } else {
                 respuesta.setCodigo("01");
                 System.out.println("Se detectó otra excepción: " + error.getMessage());
