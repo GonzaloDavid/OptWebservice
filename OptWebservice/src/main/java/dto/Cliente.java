@@ -10,6 +10,7 @@ public class Cliente {
     private String codtipoIdentificacion;
 private String codEdad;
 private String codNombre;
+private String errorFortmatFecha;
 
     public Cliente() {
     }
@@ -73,6 +74,14 @@ private String codNombre;
 
     public void setCodNombre(String codNombre) {
         this.codNombre = codNombre;
+    }
+
+    public String getErrorFortmatFecha() {
+        return errorFortmatFecha;
+    }
+
+    public void setErrorFortmatFecha(String errorFortmatFecha) {
+        this.errorFortmatFecha = errorFortmatFecha;
     }
 
     public void setCodEdad(String codEdad) {
