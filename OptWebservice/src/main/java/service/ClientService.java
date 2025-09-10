@@ -1,12 +1,15 @@
 package service;
 
 import dto.Cliente;
+import dto.ValidaredadDto;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import util.MessageService;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 
 @Stateless
 public class ClientService {
@@ -45,30 +48,41 @@ public class ClientService {
                 return messageService.obtenerMensaje("06") ;
         }
         }
-public String validarEdad(String fechaNacimiento)
-{
+public ValidaredadDto validarEdad(String fechaNacimiento)
+{   ValidaredadDto valedad = new ValidaredadDto();
+
     try{
         if (fechaNacimiento.length()<10)
         {
-            return messageService.obtenerMensaje("08");
+            valedad.setErroformat(messageService.obtenerMensaje("08"));
+            valedad.setExisteerror(false);
+            return valedad;
         }
         int yearOfBirth=Integer.parseInt(fechaNacimiento.substring(0,4));
         int currentYear=2025;
         int age=currentYear-yearOfBirth;
         if (age<18 )
         {
-            return messageService.obtenerMensaje("09");
+            valedad.setErroformat(messageService.obtenerMensaje("09"));
+            valedad.setExisteerror(false);
+            return valedad;
         }
-        return messageService.obtenerMensaje("07");
+        valedad.setErroformat(messageService.obtenerMensaje("07"));
+        valedad.setExisteerror(false);
+        return valedad;
+
     }catch (NumberFormatException e)
     {
+        valedad.setErroformat("Error de formato edad");
+        valedad.setExisteerror(true);
         System.out.println("Error de Numeros: " + e.getMessage());
-        throw e;
+
     }catch (Exception e1)
     {
         System.out.println("Error generico: " + e1.getMessage());
         throw e1;
     }
+    return valedad;
 }
 public String validarNombre(String nombre)
 {
@@ -83,6 +97,7 @@ public String validarNombre(String nombre)
     return messageService.obtenerMensaje("12");
 }
 public List<Cliente> procesoGuardaCliente(List<Cliente> inputListaClientes){
+
     List<Cliente> listaRetorno=new ArrayList<>();
     for(Cliente clienteIteracion: inputListaClientes)
     {
@@ -90,9 +105,15 @@ public List<Cliente> procesoGuardaCliente(List<Cliente> inputListaClientes){
         String nombreMayusculas=convertirNombresMayuscula(clienteIteracion.getNombre());
         String codvalidaIdentificacion=validaIdentificacion(clienteIteracion.getIdentificacion());
         String tipoiden=VerifiIden(clienteIteracion.getTipoIdentificacion());
-        String edad=validarEdad(clienteIteracion.getFechaNacimiento());
+        ValidaredadDto codvalidacion =validarEdad(clienteIteracion.getFechaNacimiento());
+        if (codvalidacion.isExisteerror()){
+
+            LocalDateTime fechaActual = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+            clienteIteracion.setFechaNacimiento(fechaActual.format(formatter));
+        }
         String nombre=validarNombre(clienteIteracion.getNombre());
-        clienteIteracion.setCodEdad(edad);
+        clienteIteracion.setCodEdad(codvalidacion.getErroformat());
         clienteIteracion.setCodNombre(nombre);
         clienteIteracion.setNombre(nombreMayusculas);
         clienteIteracion.setCodRetornoIdentificacion(codvalidaIdentificacion);
