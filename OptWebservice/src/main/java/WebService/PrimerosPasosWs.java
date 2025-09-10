@@ -1,13 +1,12 @@
 package WebService;
 
+import dao.EstablecimientoDAO;
 import dto.Cliente;
 import dto.RespuestaMensaje;
+import entidad.Establecimiento;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import service.ClientService;
 
@@ -20,6 +19,8 @@ import java.util.List;
 public class PrimerosPasosWs {
     @Inject
     private ClientService client;
+    @Inject
+    private EstablecimientoDAO establecimientoDAO;
     public PrimerosPasosWs() {
     }
 
@@ -64,6 +65,15 @@ public class PrimerosPasosWs {
             respuesta.setMensaje("Ocurrio un error: " + error.getMessage());
         }
         return respuesta;
+    }
+
+    @GET
+    @Path("obtenerCliente")
+    @Produces({ MediaType.APPLICATION_JSON})
+    public Establecimiento obtenerCliente(
+            @QueryParam("codigo") String codigo)
+    {
+        return establecimientoDAO.obtenerPorCodigo(codigo);
     }
     @POST
     @Path("pathLuis")

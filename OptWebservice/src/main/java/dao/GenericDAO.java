@@ -7,7 +7,7 @@ import java.util.List;
 
 
 public class GenericDAO<T> {
-    @PersistenceContext(unitName = "transferCallCenterPU")
+    @PersistenceContext(unitName = "optPool")
     protected EntityManager em;
 
     private Class<T> instance;
