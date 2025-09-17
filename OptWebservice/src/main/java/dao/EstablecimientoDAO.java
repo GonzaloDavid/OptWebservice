@@ -33,5 +33,12 @@ public class EstablecimientoDAO extends GenericDAO<Establecimiento> {
         }
     }
 
+ public Integer borraEstablecimiento(String Clave){
+        String sql = "delete  FROM Establecimiento  WHERE codigo=:parametroEntrada";
+        Query consulta=this.em.createQuery(sql);
+        consulta.setParameter("parametroEntrada",Clave);
 
+        Integer res = consulta.executeUpdate();
+        return res;
+ }
 }

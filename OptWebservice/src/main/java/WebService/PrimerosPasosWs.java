@@ -75,6 +75,16 @@ public class PrimerosPasosWs {
     {
         return establecimientoDAO.obtenerPorCodigo(codigo);
     }
+
+    @GET
+    @Path("borrarEstablecimiento")
+    @Produces({ MediaType.APPLICATION_JSON})
+    public Integer borrarEstablecimiento(
+            @QueryParam("codigo") String codigo)
+    {
+        return establecimientoDAO.borraEstablecimiento(codigo);
+    }
+
     @POST
     @Path("pathLuis")
     @Produces({ MediaType.APPLICATION_JSON})
