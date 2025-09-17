@@ -4,12 +4,16 @@ package entidad;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 import java.math.BigDecimal;
 
-@Entity(name = "ESTTC")
+@Entity
+@Table(name = "ESTTC")
 public class Establecimiento {
 
+    @Id
     @Column(name = "ESTCOD")
     private String codigo;
     @Column(name = "ESTNOM")

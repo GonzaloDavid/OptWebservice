@@ -16,8 +16,11 @@ public class EstablecimientoDAO extends GenericDAO<Establecimiento> {
 
     public Establecimiento obtenerPorCodigo(String key){
 
+
         //JPA --> NO SQL --> JPQL
-        String sql=" SELECT est FROM Establecimiento est WHERE est.codigo= :parametroEntrada ";
+
+        //String sql=" SELECT * FROM ESTTC ";
+        String sql=" SELECT a FROM Establecimiento a WHERE a.codigo=:parametroEntrada ";
 
         Query consulta=this.em.createQuery(sql);
         consulta.setParameter("parametroEntrada",key);
