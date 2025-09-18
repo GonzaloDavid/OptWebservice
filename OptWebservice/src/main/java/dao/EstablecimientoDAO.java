@@ -42,4 +42,10 @@ public class EstablecimientoDAO extends GenericDAO<Establecimiento> {
         Integer res = consulta.executeUpdate();
         return res;
  }
+
+    public void insertEstablecimiento(Establecimiento registro  ) {
+
+        insert(registro);
+
+    }
 }
