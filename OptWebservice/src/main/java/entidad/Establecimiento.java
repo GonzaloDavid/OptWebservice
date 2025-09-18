@@ -1,7 +1,6 @@
 package entidad;
 
 
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -58,3 +57,5 @@ public class Establecimiento {
         this.direccion = direccion;
     }
 }
+
+
