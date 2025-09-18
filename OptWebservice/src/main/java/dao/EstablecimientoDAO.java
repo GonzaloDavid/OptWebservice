@@ -19,6 +19,7 @@ public class EstablecimientoDAO extends GenericDAO<Establecimiento> {
 
         //JPA --> NO SQL --> JPQL
 
+        
         //String sql=" SELECT * FROM ESTTC ";
         String sql=" SELECT a FROM Establecimiento a WHERE a.codigo=:parametroEntrada ";
 
