@@ -94,7 +94,14 @@ public class PrimerosPasosWs {
         establecimientoDAO.insertEstablecimiento(estab);
         return estab;
     }
-
+    @PUT
+    @Path("updateEstablecimiento")
+    @Produces({ MediaType.APPLICATION_JSON})
+    public Establecimiento updateEstablecimiento(Establecimiento estab)
+    {
+        establecimientoDAO.updateEstablecimiento(estab);
+        return estab;
+    }
     @POST
     @Path("pathLuis")
     @Produces({ MediaType.APPLICATION_JSON})
