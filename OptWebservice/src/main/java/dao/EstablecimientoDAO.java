@@ -1,8 +1,9 @@
 package dao;
 
 import entidad.Establecimiento;
-import jakarta.ejb.Stateless;
-import jakarta.persistence.Query;
+import javax.ejb.Stateless;
+import javax.persistence.Query;
+
 
 import java.util.List;
 

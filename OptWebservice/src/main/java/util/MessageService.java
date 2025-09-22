@@ -1,6 +1,6 @@
 package util;
 
-import jakarta.ejb.Singleton;
+import javax.ejb.Singleton;
 
 @Singleton
 public class MessageService {

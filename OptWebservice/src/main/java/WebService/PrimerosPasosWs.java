@@ -4,10 +4,10 @@ import dao.EstablecimientoDAO;
 import dto.Cliente;
 import dto.RespuestaMensaje;
 import entidad.Establecimiento;
-import jakarta.ejb.Stateless;
-import jakarta.inject.Inject;
-import jakarta.ws.rs.*;
-import jakarta.ws.rs.core.MediaType;
+import javax.ejb.Stateless;
+import javax.inject.Inject;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import service.ClientService;
 
 import java.util.ArrayList;

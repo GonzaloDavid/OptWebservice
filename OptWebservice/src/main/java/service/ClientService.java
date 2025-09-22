@@ -2,8 +2,8 @@ package service;
 
 import dto.Cliente;
 import dto.ValidaredadDto;
-import jakarta.ejb.Stateless;
-import jakarta.inject.Inject;
+import javax.ejb.Stateless;
+import javax.inject.Inject;
 import util.MessageService;
 import java.util.ArrayList;
 import java.util.List;
