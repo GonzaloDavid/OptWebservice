@@ -20,6 +20,8 @@ public class MessageService {
     private static final String NOMBRE_NO_VALIDO="Nombre no válido";
     private static final String NOMBRE_VACIO="Nombre vacío";
     private static final String NOMBRE_VALIDO="Nombre válido";
+    public static final String SALDO_VALIDO="Saldo válido";
+    public static final String SALDO_NO_VALIDO="Saldo no válido";
 
     public MessageService() {
     }
@@ -50,6 +52,10 @@ public class MessageService {
                 return NOMBRE_NO_VALIDO;
             case "12":
                 return NOMBRE_VALIDO;
+            case "13":
+                return SALDO_NO_VALIDO;
+            case "14":
+                return SALDO_VALIDO;
             default:
                 return "Código de mensaje no reconocido";
         }

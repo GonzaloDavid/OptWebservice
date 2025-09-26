@@ -1,5 +1,7 @@
 package WebService;
 
+
+
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 import java.util.Set;
@@ -12,6 +14,7 @@ public class JAXRSConfiguration extends Application {
     public Set<Class<?>> getClasses() {
         Set<Class<?>> resources = new java.util.HashSet<>();
         resources.add(PrimerosPasosWs.class);
+        resources.add(ClientejtWs.class);
         return resources;
     }
 }
