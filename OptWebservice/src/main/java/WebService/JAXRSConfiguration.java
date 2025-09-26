@@ -12,6 +12,7 @@ public class JAXRSConfiguration extends Application {
     public Set<Class<?>> getClasses() {
         Set<Class<?>> resources = new java.util.HashSet<>();
         resources.add(PrimerosPasosWs.class);
+        resources.add(CliluiWS.class);
         return resources;
     }
 }
