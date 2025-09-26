@@ -33,7 +33,21 @@
             <version>2.2</version>
             <scope>provided</scope>
         </dependency>
-
+        <dependency>
+            <groupId>iseries.programcall.base</groupId>
+            <artifactId>pcbcommon</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>ec.com.bancointernacional.comun</groupId>
+            <artifactId>dao-common</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.jt400</groupId>
+            <artifactId>jt400-jdk8</artifactId>
+            <version>11.0</version>
+        </dependency>
 
     </dependencies>
 
