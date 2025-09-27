@@ -48,6 +48,11 @@
             <artifactId>jt400-jdk8</artifactId>
             <version>11.0</version>
         </dependency>
+        <dependency>
+            <groupId>ec.com.bancointernacional.srvpgm</groupId>
+            <artifactId>BSIM001</artifactId>
+            <version>1.0.0</version>
+        </dependency>
 
     </dependencies>
 

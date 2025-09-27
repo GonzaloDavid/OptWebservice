@@ -1,4 +1,4 @@
-package rpg;
+package rpg.conexion;
 
 import iseries.programcall.base.AbstractProgramCallBean;
 

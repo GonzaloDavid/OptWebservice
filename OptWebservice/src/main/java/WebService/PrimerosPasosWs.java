@@ -8,6 +8,8 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+
+import rpg.programas.BSIM001Programa;
 import service.ClientService;
 
 import java.util.ArrayList;
@@ -21,6 +23,8 @@ public class PrimerosPasosWs {
     private ClientService client;
     @Inject
     private EstablecimientoDAO establecimientoDAO;
+    @Inject
+    private BSIM001Programa programaBusqueda;
     public PrimerosPasosWs() {
     }
 
@@ -74,6 +78,16 @@ public class PrimerosPasosWs {
             @QueryParam("codigo") String codigo)
     {
         return establecimientoDAO.obtenerPorCodigo(codigo);
+    }
+
+
+    @GET
+    @Path("obtenerBusqueda")
+    @Produces({ MediaType.APPLICATION_JSON})
+    public void obtenerBusquedaProgramas(
+            @QueryParam("strBusqueda") String strBusqueda)
+    {
+        programaBusqueda.ejecutarPrograma(strBusqueda);
     }
 
     @DELETE

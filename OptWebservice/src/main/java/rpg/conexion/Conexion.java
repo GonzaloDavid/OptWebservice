@@ -1,4 +1,4 @@
-package rpg;
+package rpg.conexion;
 
 import com.ibm.as400.access.AS400;
 import com.ibm.as400.access.AS400ConnectionPool;
@@ -36,7 +36,7 @@ public class Conexion {
 	static {
 
 
-		servidor = "SERVER";
+		servidor = "GIBS2.baninter.int";
 		maxConnections = 10;
 		maxLifeTime =10;
 		maxInactivity = 10;
