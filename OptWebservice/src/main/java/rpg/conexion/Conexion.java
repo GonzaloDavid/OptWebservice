@@ -21,8 +21,8 @@ import java.util.concurrent.Future;
 public class Conexion {
 
 
-	private static final String USUARIO="USUARIO";
-	private static final String CLAVE="CLAVE";
+	private static final String USUARIO="BIAUSUCA";
+	private static final String CLAVE="aL7P9D87";
 	private static String servidor = null;
 	private static int maxConnections = 0;
 	private static int maxLifeTime = 0;

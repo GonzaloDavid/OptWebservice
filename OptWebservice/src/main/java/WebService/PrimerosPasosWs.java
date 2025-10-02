@@ -3,6 +3,7 @@ package WebService;
 import dao.EstablecimientoDAO;
 import dto.Cliente;
 import dto.RespuestaMensaje;
+import dto.RespuestaMensajejt;
 import entidad.Establecimiento;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -84,10 +85,11 @@ public class PrimerosPasosWs {
     @GET
     @Path("obtenerBusqueda")
     @Produces({ MediaType.APPLICATION_JSON})
-    public void obtenerBusquedaProgramas(
-            @QueryParam("strBusqueda") String strBusqueda)
+    public RespuestaMensajejt obtenerBusquedaProgramas(
+            @QueryParam("strBusqueda") String strBusqueda,
+            @QueryParam("user") String user)
     {
-        programaBusqueda.ejecutarPrograma(strBusqueda);
+       return programaBusqueda.ejecutarPrograma(strBusqueda, user);
     }
 
     @DELETE
