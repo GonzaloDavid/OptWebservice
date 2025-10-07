@@ -18,11 +18,11 @@ public class SRIB004Programa {
         header.setBANKID("01");
         header.setCHANNEL("OPT");
         header.setCUSTOMERID("1");
-        header.setGROUPID("");
+        header.setGROUPID("G9");
         header.setIPADDRESS("");
         header.setPRODUCTCODE("1");
         header.setDATEANDTIME("2025-10-06 10:04:10.581");
-        header.setSEQUENTIAL(new BigDecimal(1));
+        header.setSEQUENTIAL(new BigDecimal(2410415));
         header.setUSERID(user);
         header.setSERVICECODE("20004");
         header.setTRANSERVICECODE("2066");
@@ -37,8 +37,8 @@ public class SRIB004Programa {
 
             //Creamos objeto input
             DS_INPDATCLI d=new DS_INPDATCLI();
-            d.setCUSTNROPRO(new BigDecimal(bgNumpro.doubleValue()));
-            d.setCUSTCODCLI (new BigDecimal(bgCodcli.doubleValue()));
+            d.setCUSTNROPRO(bgNumpro);
+            d.setCUSTCODCLI (bgCodcli);
 
             CLI_DATPROS programAS400 = new CLI_DATPROS();
             programAS400.setIN_CABEC(header);
@@ -46,15 +46,14 @@ public class SRIB004Programa {
             Util.invokeTrx(programAS400);
 
             if (programAS400.getReturnValue() != 0 || "".equals(programAS400.getOU_CABEC().getMESSAGEDESCR().trim())) {
-
-                System.out.println("Resultado programa as400"+ programAS400.getOU_CABEC().getMESSAGEDESCR());
-                response.setCodigo("00");
+                response.setCodigo("500");
+                System.out.println("Resultado con error "+ programAS400.getOU_CABEC().getMESSAGEDESCR());
                 response.setMensaje(programAS400.getOU_CABEC().getMESSAGEDESCR());
 
             } else {
 
-                response.setCodigo("500");
-                System.out.println("Resultado con error "+ programAS400.getOU_CABEC().getMESSAGEDESCR());
+                System.out.println("Resultado programa as400"+ programAS400.getOU_CABEC().getMESSAGEDESCR());
+                response.setCodigo("00");
                 response.setMensaje(programAS400.getOU_CABEC().getMESSAGEDESCR());
             }
 

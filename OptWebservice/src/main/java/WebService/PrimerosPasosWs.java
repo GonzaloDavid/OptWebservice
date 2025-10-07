@@ -95,18 +95,25 @@ public class PrimerosPasosWs {
     {
        return programaBusqueda.ejecutarPrograma(strBusqueda, user);
     }
-//
-@GET
-@Path("datoProspecto")
-@Produces({ MediaType.APPLICATION_JSON})
-public RespuestaMensajejt datoProspectoProgramas(
-        @QueryParam("user") String user,
-        @QueryParam("bgNumpro") BigDecimal bgNumpro,
-        @QueryParam("bgCodcli") BigDecimal bgCodcli)
 
-{
-    return programaProspecto.datoProspectoProgramas(user, bgNumpro, bgCodcli);
-}
+    /**
+     * bgNumpro=801407&bgCodcli=2168440
+     * @param user
+     * @param bgNumpro
+     * @param bgCodcli
+     * @return
+     */
+    @GET
+    @Path("datoProspecto")
+    @Produces({ MediaType.APPLICATION_JSON})
+    public RespuestaMensajejt datoProspectoProgramas(
+            @QueryParam("user") String user,
+            @QueryParam("bgNumpro") BigDecimal bgNumpro,
+            @QueryParam("bgCodcli") BigDecimal bgCodcli)
+
+    {
+        return programaProspecto.datoProspectoProgramas(user, bgNumpro, bgCodcli);
+    }
 
     //
     @DELETE
