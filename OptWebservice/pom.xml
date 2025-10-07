@@ -53,6 +53,11 @@
             <artifactId>BSIM001</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>ec.com.bancointernacional.srvpgm</groupId>
+            <artifactId>SRIB004</artifactId>
+            <version>1.0.0</version>
+        </dependency>
 
     </dependencies>
 
