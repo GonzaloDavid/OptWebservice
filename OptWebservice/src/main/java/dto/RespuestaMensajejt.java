@@ -1,5 +1,6 @@
 package dto;
 
+import ec.com.bancointernacional.SRIB004.DS_RESDATCLI;
 import entidad.Clientejt;
 
 import java.util.ArrayList;
