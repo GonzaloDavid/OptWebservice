@@ -11,8 +11,10 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 import rpg.programas.BSIM001Programa;
+import rpg.programas.SRIB004Programa;
 import service.ClientService;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +28,8 @@ public class PrimerosPasosWs {
     private EstablecimientoDAO establecimientoDAO;
     @Inject
     private BSIM001Programa programaBusqueda;
+    @Inject
+    private SRIB004Programa programaProspecto;
     public PrimerosPasosWs() {
     }
 
@@ -92,6 +96,26 @@ public class PrimerosPasosWs {
        return programaBusqueda.ejecutarPrograma(strBusqueda, user);
     }
 
+    /**
+     * bgNumpro=801407&bgCodcli=2168440
+     * @param user
+     * @param bgNumpro
+     * @param bgCodcli
+     * @return
+     */
+    @GET
+    @Path("datoProspecto")
+    @Produces({ MediaType.APPLICATION_JSON})
+    public RespuestaMensajejt datoProspectoProgramas(
+            @QueryParam("user") String user,
+            @QueryParam("bgNumpro") BigDecimal bgNumpro,
+            @QueryParam("bgCodcli") BigDecimal bgCodcli)
+
+    {
+        return programaProspecto.datoProspectoProgramas(user, bgNumpro, bgCodcli);
+    }
+
+    //
     @DELETE
     // @GET
     @Path("borrarEstablecimiento")
