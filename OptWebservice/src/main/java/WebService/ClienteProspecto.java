@@ -1,6 +1,7 @@
 package WebService;
 
 import dto.RespuestaMensajejt;
+import dto.RespuestaProspecto;
 import rpg.programas.SRIB004Pgm;
 
 import javax.ejb.Stateless;
@@ -25,7 +26,7 @@ public class ClienteProspecto {
     @GET
     @Path("obtenerProspecto")
     @Produces({ MediaType.APPLICATION_JSON})
-    public RespuestaMensajejt obtenerProspecto(
+    public RespuestaProspecto obtenerProspecto(
             @QueryParam("codpro") BigDecimal codpro,
             @QueryParam("codcli") BigDecimal codcli)
     {

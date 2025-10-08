@@ -9,7 +9,7 @@ import java.util.List;
 public class RespuestaProspecto {
     private String codigo;
     private String mensaje;
-    private List<DS_RESDATCLI> datos=new ArrayList<>();
+    private DS_RESDATCLI datos=new DS_RESDATCLI();
 
     public RespuestaProspecto() {
 
@@ -18,6 +18,7 @@ public class RespuestaProspecto {
     public RespuestaProspecto(String codigo, String mensaje) {
         this.codigo = codigo;
         this.mensaje= mensaje;
+
     }
 
     public String getCodigo() {
@@ -28,9 +29,7 @@ public class RespuestaProspecto {
         return mensaje;
     }
 
-    public List<DS_RESDATCLI> getDatos() {
-        return datos;
-    }
+
 
     public void setCodigo(String codigo) {
         this.codigo = codigo;
@@ -40,7 +39,11 @@ public class RespuestaProspecto {
         this.mensaje = mensaje;
     }
 
-    public void setDatos(List<DS_RESDATCLI> datos) {
+    public DS_RESDATCLI getDatos() {
+        return datos;
+    }
+
+    public void setDatos(DS_RESDATCLI datos) {
         this.datos = datos;
     }
 }

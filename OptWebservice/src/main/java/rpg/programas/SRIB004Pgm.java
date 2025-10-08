@@ -1,6 +1,7 @@
 package rpg.programas;
 
 import dto.RespuestaMensajejt;
+import dto.RespuestaProspecto;
 import ec.com.bancointernacional.BSIM001.DS_INPSTRBUS;
 import ec.com.bancointernacional.BSIM001.PRO_STRINGBUSQ;
 import ec.com.bancointernacional.SRIB004.CLI_DATPROS;
@@ -29,9 +30,9 @@ public class SRIB004Pgm {
         header.setBANKID("01");
         return header;
     }
-    public RespuestaMensajejt ejecutarPrograma(BigDecimal numpro, BigDecimal codcli, String user)
+    public RespuestaProspecto ejecutarPrograma(BigDecimal numpro, BigDecimal codcli, String user)
     {
-        RespuestaMensajejt response=new RespuestaMensajejt();
+        RespuestaProspecto response=new RespuestaProspecto();
         try{
             //Creamos el objeto cabecera
 
@@ -49,15 +50,17 @@ public class SRIB004Pgm {
 
             if (programAS400.getReturnValue() != 0 || "".equals(programAS400.getOU_CABEC().getMESSAGEDESCR().trim())) {
 
-                System.out.println("Resultado programa as400"+ programAS400.getOU_CABEC().getMESSAGEDESCR());
-                response.setCodigo("00");
-                response.setMensaje(programAS400.getOU_CABEC().getMESSAGEDESCR());
-
-            } else {
-
                 response.setCodigo("500");
                 System.out.println("Resultado con error "+ programAS400.getOU_CABEC().getMESSAGEDESCR());
                 response.setMensaje(programAS400.getOU_CABEC().getMESSAGEDESCR());
+
+
+            } else {
+                System.out.println("Resultado programa as400"+ programAS400.getOU_CABEC().getMESSAGEDESCR());
+                response.setCodigo("00");
+                response.setMensaje(programAS400.getOU_CABEC().getMESSAGEDESCR());
+                response.setDatos(programAS400.getOU_RESDATCLI());
+
             }
 
         }catch (Exception e)
