@@ -58,6 +58,11 @@
             <artifactId>SRIB004</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>ec.com.bancointernacional.srvpgm</groupId>
+            <artifactId>SRIB003</artifactId>
+            <version>1.0.0</version>
+        </dependency>
 
     </dependencies>
 

@@ -11,6 +11,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 import rpg.programas.BSIM001Programa;
+import rpg.programas.SRIB003Programa;
 import rpg.programas.SRIB004Programa;
 import service.ClientService;
 
@@ -30,6 +31,8 @@ public class PrimerosPasosWs {
     private BSIM001Programa programaBusqueda;
     @Inject
     private SRIB004Programa programaProspecto;
+    @Inject
+    private SRIB003Programa programaCliente;
     public PrimerosPasosWs() {
     }
 
@@ -113,6 +116,18 @@ public class PrimerosPasosWs {
 
     {
         return programaProspecto.datoProspectoProgramas(user, bgNumpro, bgCodcli);
+    }
+
+    @GET
+    @Path("datoCliente")
+    @Produces({ MediaType.APPLICATION_JSON})
+    public RespuestaMensajejt datoClienteProgramas(
+            @QueryParam("user") String user,
+            @QueryParam("bgNumpro") BigDecimal bgNumpro,
+            @QueryParam("bgCodcli") BigDecimal bgCodcli)
+
+    {
+        return programaCliente.datoClienteProgramas(user, bgNumpro, bgCodcli);
     }
 
     //
