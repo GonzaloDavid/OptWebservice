@@ -16,7 +16,7 @@ public class BSIM001Programa {
     public INP_CABECERA setupHeader(String user) {
         INP_CABECERA header = new INP_CABECERA();
         header.setADITIONALCUSID("");
-        header.setBANKID("1");
+        header.setBANKID("01");
         header.setCHANNEL("OPT");
         header.setCUSTOMERID("1");
         header.setGROUPID("");

@@ -6,18 +6,18 @@ import entidad.Clientejt;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RespuestaMensajejt {
+public class RespuestaProspecto {
     private String codigo;
     private String mensaje;
-    private List<Clientejt> datos=new ArrayList<>();
+    private DS_RESDATCLI datos=new DS_RESDATCLI();
 
+    public RespuestaProspecto() {
 
-    public RespuestaMensajejt() {
     }
 
-    public RespuestaMensajejt(String codigo, String mensaje) {
+    public RespuestaProspecto(String codigo, String mensaje) {
         this.codigo = codigo;
-        this.mensaje = mensaje;
+        this.mensaje= mensaje;
 
     }
 
@@ -25,23 +25,25 @@ public class RespuestaMensajejt {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
     public String getMensaje() {
         return mensaje;
+    }
+
+
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
     }
 
-    public List<Clientejt> getDatos() {
+    public DS_RESDATCLI getDatos() {
         return datos;
     }
 
-    public void setDatos(List<Clientejt> datos) {
+    public void setDatos(DS_RESDATCLI datos) {
         this.datos = datos;
     }
 }

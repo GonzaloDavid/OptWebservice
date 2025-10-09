@@ -16,6 +16,8 @@ public class JAXRSConfiguration extends Application {
         resources.add(PrimerosPasosWs.class);
         resources.add(CliluiWS.class);
         resources.add(ClientejtWs.class);
+        resources.add(ClienteProspecto.class);
+        resources.add(ClienteBcoWS.class);
         return resources;
     }
 }

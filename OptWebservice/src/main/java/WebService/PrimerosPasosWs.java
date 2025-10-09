@@ -39,7 +39,7 @@ public class PrimerosPasosWs {
     @GET
     @Path("getHellowWold")
     @Produces({ MediaType.APPLICATION_JSON})
-    public String getHellowWold()
+        public String getHellowWold()
     {
         return "Hola Mundo";
     }
