@@ -1,35 +1,32 @@
 package rpg.programas;
 
 import dto.RespuestaMensajejt;
-import ec.com.bancointernacional.BSIM001.DS_INPSTRBUS;
-import ec.com.bancointernacional.BSIM001.INP_CABECERA;
-import ec.com.bancointernacional.BSIM001.PRO_STRINGBUSQ;
-import org.apache.logging.log4j.Level;
+import ec.com.bancointernacional.SRIB003.CLI_DATCLIEN;
+import ec.com.bancointernacional.SRIB003.DS_INPDATCLI;
+import ec.com.bancointernacional.SRIB003.INP_CABECERA;
 import rpg.conexion.Util;
 
-import javax.ejb.Stateless;
 import java.math.BigDecimal;
 
-@Stateless
-public class BSIM001Programa {
+public class SRIB003Programa {
 
-    public INP_CABECERA setupHeader(String user) {
-        INP_CABECERA header = new INP_CABECERA();
+    public ec.com.bancointernacional.SRIB003.INP_CABECERA setupHeader(String user) {
+        ec.com.bancointernacional.SRIB003.INP_CABECERA header = new ec.com.bancointernacional.SRIB003.INP_CABECERA();
         header.setADITIONALCUSID("");
         header.setBANKID("01");
         header.setCHANNEL("OPT");
         header.setCUSTOMERID("1");
-        header.setGROUPID("");
+        header.setGROUPID("G9");
         header.setIPADDRESS("");
         header.setPRODUCTCODE("1");
-        header.setDATEANDTIME("");
-        header.setSEQUENTIAL(new BigDecimal(1));
+        header.setDATEANDTIME("2025-10-06 10:04:10.581");
+        header.setSEQUENTIAL(new BigDecimal(2410415));
         header.setUSERID(user);
         header.setSERVICECODE("20004");
         header.setTRANSERVICECODE("2066");
         return header;
     }
-    public RespuestaMensajejt ejecutarPrograma(String strBusqueda, String user)
+    public RespuestaMensajejt datoClienteProgramas(String user, BigDecimal bgNumpro, BigDecimal bgCodcli)
     {
         RespuestaMensajejt response=new RespuestaMensajejt();
         try{
@@ -37,24 +34,24 @@ public class BSIM001Programa {
             INP_CABECERA header=setupHeader(user);
 
             //Creamos objeto input
-            DS_INPSTRBUS d=new DS_INPSTRBUS();
-            d.setSTRIBUSQUE(strBusqueda);
+            DS_INPDATCLI d=new DS_INPDATCLI();
+            d.setCUSTNROPRO(bgNumpro);
+            d.setCUSTCODCLI (bgCodcli);
 
-            PRO_STRINGBUSQ programAS400 = new PRO_STRINGBUSQ();
+            CLI_DATCLIEN programAS400 = new CLI_DATCLIEN();
             programAS400.setIN_CABEC(header);
-            programAS400.setIN_STRBUS(d);
+            programAS400.setIN_DATCLI(d);
             Util.invokeTrx(programAS400);
 
             if (programAS400.getReturnValue() != 0 || "".equals(programAS400.getOU_CABEC().getMESSAGEDESCR().trim())) {
-
-                System.out.println("Resultado programa as400"+ programAS400.getOU_CABEC().getMESSAGEDESCR());
-                response.setCodigo("00");
+                response.setCodigo("500");
+                System.out.println("Resultado con error "+ programAS400.getOU_CABEC().getMESSAGEDESCR());
                 response.setMensaje(programAS400.getOU_CABEC().getMESSAGEDESCR());
 
             } else {
 
-                response.setCodigo("500");
-                System.out.println("Resultado con error "+ programAS400.getOU_CABEC().getMESSAGEDESCR());
+                System.out.println("Resultado programa as400"+ programAS400.getOU_CABEC().getMESSAGEDESCR());
+                response.setCodigo("00");
                 response.setMensaje(programAS400.getOU_CABEC().getMESSAGEDESCR());
             }
 
@@ -64,4 +61,6 @@ public class BSIM001Programa {
         }
         return response;
     }
+
+
 }

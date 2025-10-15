@@ -1,24 +1,24 @@
 package dto;
 
-import ec.com.bancointernacional.SRIB004.DS_RESDATCLI;
-import entidad.Clientejt;
+import ec.com.bancointernacional.SRIB003.DS_RESDATCLI;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RespuestaMensajejt {
+public class RespuestaCliente {
+
     private String codigo;
     private String mensaje;
-    private List<Clientejt> datos=new ArrayList<>();
+    private DS_RESDATCLI datos=new DS_RESDATCLI();
 
 
-    public RespuestaMensajejt() {
+    public RespuestaCliente() {
+
     }
 
-    public RespuestaMensajejt(String codigo, String mensaje) {
+    public RespuestaCliente(String codigo, String mensaje) {
         this.codigo = codigo;
         this.mensaje = mensaje;
-
     }
 
     public String getCodigo() {
@@ -37,11 +37,11 @@ public class RespuestaMensajejt {
         this.mensaje = mensaje;
     }
 
-    public List<Clientejt> getDatos() {
+    public DS_RESDATCLI getDatos() {
         return datos;
     }
 
-    public void setDatos(List<Clientejt> datos) {
+    public void setDatos(DS_RESDATCLI datos) {
         this.datos = datos;
     }
 }
