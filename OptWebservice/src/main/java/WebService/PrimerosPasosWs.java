@@ -7,12 +7,15 @@ import dto.RespuestaMensajejt;
 import entidad.Establecimiento;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import rpg.programas.BSIM001Programa;
 import rpg.programas.SRIB004Programa;
 import service.ClientService;
+import service.RPGService;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -30,6 +33,8 @@ public class PrimerosPasosWs {
     private BSIM001Programa programaBusqueda;
     @Inject
     private SRIB004Programa programaProspecto;
+    @Inject
+    private RPGService programaSocketAS400;
     public PrimerosPasosWs() {
     }
 
@@ -83,6 +88,16 @@ public class PrimerosPasosWs {
             @QueryParam("codigo") String codigo)
     {
         return establecimientoDAO.obtenerPorCodigo(codigo);
+    }
+
+    @GET
+    @Path("actualizacionPrestamo")
+    @Produces({ MediaType.APPLICATION_JSON})
+    public void actualizacionPrestamoWS(
+            @QueryParam("numeroPrestamo") String numeroPrestamo,
+            @Context  HttpServletRequest req)
+    {
+         programaSocketAS400.actualizaFechaPrestamo("BIANOGW", req,numeroPrestamo);
     }
 
 
