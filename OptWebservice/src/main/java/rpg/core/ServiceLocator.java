@@ -91,11 +91,11 @@ public class ServiceLocator {
     /**
      * Field sckMsgPackage
      */
-    private String sckMsgPackage = "ec.com.bancointernacional.rpg.beans";
+    private String sckMsgPackage = "rpg.beans";
     /**
      * Field sckMsgRouter
      */
-    private String sckMsgRouter = "ec.com.bancointernacional.rpg.core.TOSocketMessageRouter";
+    private String sckMsgRouter = "rpg.core.TOSocketMessageRouter";
 
     /**
      * Field jmsCnxFactory
