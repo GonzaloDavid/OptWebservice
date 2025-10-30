@@ -16,7 +16,7 @@ import java.io.IOException;
 
 @Stateless
 public class RPGServiceCallcenter extends JSEIBSServlet {
-    public boolean listadocallcenter(String user, HttpServletRequest req, String numeroPrestamo)
+    public boolean listadocallcenter(String user, HttpServletRequest req, String fechabusqueda, String callcenter,String ccenum )
     {
         boolean existRecord=false;
         try{
@@ -28,8 +28,9 @@ public class RPGServiceCallcenter extends JSEIBSServlet {
                 msg.setH01PGM("ESD2783");
                 msg.setH01TIM(getTimeStamp());
                 msg.setH01OPE("0019");
-
-
+                msg.setE01CCCFED(fechabusqueda);
+                msg.setE01CCEDIS(callcenter);
+                msg.setE01CCECNO(ccenum);
                // msg.setH01TIMSYS(getTimeStamp());
                // msg.setH01OPECOD("0002");
                // msg.setE01DEAACC(new BigDecimal(numeroPrestamo));

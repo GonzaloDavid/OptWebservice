@@ -113,9 +113,11 @@ public class PrimerosPasosWs {
     @Produces({ MediaType.APPLICATION_JSON})
     public void listadocallcenterWS(
             @QueryParam("numeroPrestamo") String numeroPrestamo,
+            @QueryParam("callcenter") String callcenter,
+            @QueryParam("ccenum") String ccenum,
             @Context  HttpServletRequest req)
     {
-        programaSocketAS400JT.listadocallcenter("BIANOGW", req,numeroPrestamo);
+        programaSocketAS400JT.listadocallcenter("BIANOGW", req,numeroPrestamo, callcenter,ccenum);
     }
 
     @GET
