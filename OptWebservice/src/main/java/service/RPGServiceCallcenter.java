@@ -1,8 +1,7 @@
 package service;
 
-import rpg.beans.DPR000101Message;
-
-import rpg.beans.EDL094001Message;
+//import com.sun.org.apache.xml.internal.serializer.utils.MsgKey;
+import rpg.beans.ESD278301Message;
 import rpg.beans.ELEERRMessage;
 import rpg.core.ESS0030DSMessage;
 import rpg.core.JSEIBSServlet;
@@ -14,23 +13,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.math.BigDecimal;
 
 @Stateless
-public class RPGService extends JSEIBSServlet {
-    public boolean actualizaFechaPrestamo(String user, HttpServletRequest req, String numeroPrestamo)
+public class RPGServiceCallcenter extends JSEIBSServlet {
+    public boolean listadocallcenter(String user, HttpServletRequest req, String numeroPrestamo)
     {
         boolean existRecord=false;
         try{
             MessageProcessor mp = null;
             try {
-                mp = getMessageProcessor("EDL0940", req);
-                EDL094001Message msg = (EDL094001Message) mp.getMessageRecord("DPR000101");
-                msg.setH01USERID(user);
-                msg.setH01PROGRM("EDL0940");
-                msg.setH01TIMSYS(getTimeStamp());
-                msg.setH01OPECOD("0002");
-                msg.setE01DEAACC(new BigDecimal(numeroPrestamo));
+                mp = getMessageProcessor("ESD2783", req);
+               ESD278301Message msg = (ESD278301Message) mp.getMessageRecord("ESD278301");
+                msg.setH01USR(user);
+                msg.setH01PGM("ESD2783");
+                msg.setH01TIM(getTimeStamp());
+                msg.setH01OPE("0019");
+
+
+               // msg.setH01TIMSYS(getTimeStamp());
+               // msg.setH01OPECOD("0002");
+               // msg.setE01DEAACC(new BigDecimal(numeroPrestamo));
 
                 mp.sendMessage(msg);
                 ELEERRMessage msgError = (ELEERRMessage) mp.receiveMessageRecord("ELEERR");
@@ -46,7 +48,7 @@ public class RPGService extends JSEIBSServlet {
                     }
                 } else {
 
-                    msg = (EDL094001Message) mp.receiveMessageRecord();
+                    msg = (ESD278301Message) mp.receiveMessageRecord();
                     existRecord=true;
                 }
             } finally {

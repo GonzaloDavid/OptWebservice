@@ -17,6 +17,8 @@ import rpg.programas.SRIB003Programa;
 import rpg.programas.SRIB004Programa;
 import service.ClientService;
 import service.RPGService;
+import service.RPGServiceCallcenter;
+
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -37,7 +39,9 @@ public class PrimerosPasosWs {
     @Inject
     private RPGService programaSocketAS400;
     @Inject
-    private SRIB003Programa programaCliente;
+     private SRIB003Programa programaCliente;
+    @Inject
+    private RPGServiceCallcenter programaSocketAS400JT;
 
     public PrimerosPasosWs() {
     }
@@ -104,6 +108,15 @@ public class PrimerosPasosWs {
          programaSocketAS400.actualizaFechaPrestamo("BIANOGW", req,numeroPrestamo);
     }
 
+    @GET
+    @Path("listadocallcenter")
+    @Produces({ MediaType.APPLICATION_JSON})
+    public void listadocallcenterWS(
+            @QueryParam("numeroPrestamo") String numeroPrestamo,
+            @Context  HttpServletRequest req)
+    {
+        programaSocketAS400JT.listadocallcenter("BIANOGW", req,numeroPrestamo);
+    }
 
     @GET
     @Path("obtenerBusqueda")
