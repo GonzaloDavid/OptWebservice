@@ -16,9 +16,10 @@ import java.io.IOException;
 
 @Stateless
 public class RPGServiceCallcenter extends JSEIBSServlet {
-    public boolean listadocallcenter(String user, HttpServletRequest req, String fechabusqueda, String callcenter,String ccenum )
+    public String listadocallcenter(String user, HttpServletRequest req, String fechabusqueda, String callcenter,String ccenum )
     {
         boolean existRecord=false;
+        String resultado ="";
         try{
             MessageProcessor mp = null;
             try {
@@ -52,6 +53,7 @@ public class RPGServiceCallcenter extends JSEIBSServlet {
                     msg = (ESD278301Message) mp.receiveMessageRecord();
                     existRecord=true;
                 }
+                resultado = msg.toString();
             } finally {
                 if (mp != null)
                     mp.close();
@@ -60,7 +62,8 @@ public class RPGServiceCallcenter extends JSEIBSServlet {
         {
             e.printStackTrace();
         }
-        return existRecord;
+
+        return resultado;
     }
 
     @Override
