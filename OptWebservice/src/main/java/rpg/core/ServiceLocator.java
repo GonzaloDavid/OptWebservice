@@ -87,7 +87,7 @@ public class ServiceLocator {
     /**
      * Field sckTimeOut
      */
-    private int sckTimeOut = 18000;
+    private int sckTimeOut = 180000;
     /**
      * Field sckMsgPackage
      */

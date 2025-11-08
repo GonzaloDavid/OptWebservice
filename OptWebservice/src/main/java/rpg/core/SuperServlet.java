@@ -28,7 +28,7 @@ public abstract class SuperServlet extends HttpServlet {
 
     public static int logType = NONE; // default is not to log messages
     public static int iniSocket = -1;
-    public static int sckTimeOut = 15000;
+    public static int sckTimeOut = 180000;
     public static String hostIP = null;
 
     public static boolean formActive = false;

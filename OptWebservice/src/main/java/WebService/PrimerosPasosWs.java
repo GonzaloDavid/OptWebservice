@@ -18,6 +18,7 @@ import rpg.programas.SRIB004Programa;
 import service.ClientService;
 import service.RPGService;
 import service.RPGServiceCallcenter;
+import service.RPGServiceCliente;
 
 
 import java.math.BigDecimal;
@@ -42,6 +43,11 @@ public class PrimerosPasosWs {
      private SRIB003Programa programaCliente;
     @Inject
     private RPGServiceCallcenter programaSocketAS400JT;
+
+    @Inject
+    private RPGServiceCliente programaSocketAS400JT1;
+
+
 
     public PrimerosPasosWs() {
     }
@@ -115,12 +121,26 @@ public class PrimerosPasosWs {
             @QueryParam("numeroPrestamo") String numeroPrestamo,
             @QueryParam("callcenter") String callcenter,
             @QueryParam("ccenum") String ccenum,
+            @QueryParam("usuario") String usuario,
+
             @Context  HttpServletRequest req)
     {
-        return programaSocketAS400JT.listadocallcenter("BIANOGW", req,numeroPrestamo, callcenter,ccenum);
+        return programaSocketAS400JT.listadocallcenter(usuario, req,numeroPrestamo, callcenter,ccenum);
 
     }
 
+    @GET
+    @Path("listadoclientes")
+    @Produces({ MediaType.APPLICATION_JSON})
+    public String listadoclientesWS(
+            @QueryParam("usuario") String usuario,
+            @QueryParam("numeroIdn") String numeroIdn,
+
+            @Context  HttpServletRequest req)
+    {
+        return programaSocketAS400JT1.listadocliente(usuario, req, numeroIdn);
+
+    }
 
     @GET
     @Path("obtenerBusqueda")
